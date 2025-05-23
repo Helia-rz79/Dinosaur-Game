@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinosaur Jumper</title>
+    <link rel="stylesheet" href="assets/css/output.css">
+</head>
+<body>
+    <button class="btn bt bg-black text-red-500 cursor-pointer" id="start">Start Game</button>
+
+    <div class=" bt1 w-[20%] lg:w-[10%] h-[40px] rounded-[20px] flx center border-2 " id="point">Point : <b id="myPoint">&nbsp; 0</b></div>
+
+    <main class="w-[80%] h-[400px] lg:w-[60%] border-2 mx-auto overflow-hidden main" id="game">
+        <div class="dinosaur w-[80px] h-[80px] relative left-[40px] top-[250px]" id="dinosaur" class=""></div>
+        <div class="cactus relative left-[90%] top-[180px]  flex justify-between  w-[50px] h-[70px]" id="cactus"></div>
+        <div class="w-full h-[100px] bg-black text-white flx justify-center pt-2 text-center hidden" id="try">
+            <h4 class="w-full mt-1 flex justify-center text-red-500 text-[30px]">Game Over</h4>
+            <button class="bt2 w-[100px] h-[30px] border border-white cursor-pointer flex center rounded-[20px]" id="btn">Try Again</button>
+        </div>
+    </main>
+
+    <script src="assets/script/script.js"></script>
+</body>
+</html>
