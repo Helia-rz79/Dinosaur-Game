@@ -8,8 +8,6 @@
 
 -🙍 Developed by helia rezaie
 
--🗓️ Created - 2024-10-10
-
 -📱 Technologies Used - Html , Javascript , TailwindCSS .
 
 - Role - Frontend
