@@ -1,6 +1,7 @@
 # Dinosaur-Game
 
-![19](https://github.com/user-attachments/assets/22ff6f62-84ae-47b2-aa53-9fa56e83af8e)
+<img width="1402" height="866" alt="image" src="https://github.com/user-attachments/assets/cad8db28-b9cc-4427-b0cc-52fdb3c92203" />
+
 
 
 -🔗 [Demo Project](https://helia-rz79.github.io/Dinosaur-Game/)
