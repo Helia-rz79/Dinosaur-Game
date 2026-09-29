@@ -3,22 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinosaur Jumper</title>
+    <meta name="theme-color" content="#10131a">
+    <title>Dino Rush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/output.css">
 </head>
 <body>
-    <button class="btn bt bg-black text-red-500 cursor-pointer" id="start">Start Game</button>
+    <div class="app">
+        <header class="topbar">
+            <div class="brand">
+                <span class="mark" aria-hidden="true">
+                    <svg viewBox="0 0 36 36" fill="none">
+                        <circle cx="24" cy="12" r="5" fill="#fff6d8"/>
+                        <path fill="#1a120c" d="M6 24c2-6 6-8 10-7 1-4 4-6 8-5 1 3 0 5-2 7 3 1 5 3 5 6H8c0-1 0-1-2-1z"/>
+                    </svg>
+                </span>
+                <div>
+                    <p class="kicker">Endless canyon</p>
+                    <h1>Dino Rush</h1>
+                </div>
+            </div>
+            <p class="lede">One button. Keep the raptor off the rocks.</p>
+        </header>
 
-    <div class=" bt1 w-[20%] lg:w-[10%] h-[40px] rounded-[20px] flx center border-2 " id="point">Point : <b id="myPoint">&nbsp; 0</b></div>
+        <section class="arena" id="game" aria-label="Dino Rush">
+            <div class="sky">
+                <div class="stars" aria-hidden="true"></div>
+                <div class="sun" aria-hidden="true"></div>
+            </div>
 
-    <main class="w-[80%] h-[400px] lg:w-[60%] border-2 mx-auto overflow-hidden main" id="game">
-        <div class="dinosaur w-[80px] h-[80px] relative left-[40px] top-[250px]" id="dinosaur" class=""></div>
-        <div class="cactus relative left-[90%] top-[180px]  flex justify-between  w-[50px] h-[70px]" id="cactus"></div>
-        <div class="w-full h-[100px] bg-black text-white flx justify-center pt-2 text-center hidden" id="try">
-            <h4 class="w-full mt-1 flex justify-center text-red-500 text-[30px]">Game Over</h4>
-            <button class="bt2 w-[100px] h-[30px] border border-white cursor-pointer flex center rounded-[20px]" id="btn">Try Again</button>
-        </div>
-    </main>
+            <div class="clouds" id="clouds" aria-hidden="true">
+                <div class="cloud-set">
+                    <i class="cloud c1"></i>
+                    <i class="cloud c2"></i>
+                    <i class="cloud c3"></i>
+                </div>
+                <div class="cloud-set">
+                    <i class="cloud c1"></i>
+                    <i class="cloud c2"></i>
+                    <i class="cloud c3"></i>
+                </div>
+            </div>
+
+            <div class="ridges ridges-far" id="farHills" aria-hidden="true">
+                <svg viewBox="0 0 1000 240" preserveAspectRatio="none">
+                    <path fill="#5b3d62" d="M0 240V150h70l48-62h110l36 48h120l62-78h150l40 58h130l78-52h120l46 62h90v114H0z"/>
+                    <path fill="#3c2848" d="M0 240V186h130l60-46h120l70 40h140l80-48h170l70 36h130l50-24h50v96H0z"/>
+                </svg>
+                <svg viewBox="0 0 1000 240" preserveAspectRatio="none">
+                    <path fill="#5b3d62" d="M0 240V150h70l48-62h110l36 48h120l62-78h150l40 58h130l78-52h120l46 62h90v114H0z"/>
+                    <path fill="#3c2848" d="M0 240V186h130l60-46h120l70 40h140l80-48h170l70 36h130l50-24h50v96H0z"/>
+                </svg>
+            </div>
+
+            <div class="ridges ridges-near" id="nearHills" aria-hidden="true">
+                <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+                    <path fill="#c46b45" d="M0 200V132c80 8 120-36 210-28 100 8 130-30 230-18 110 14 150 36 250 24 90-10 140 8 210-6 40-8 70 4 100 0v96H0z"/>
+                    <path fill="#a85236" d="M0 200V168c140-20 180-52 300-40 130 14 170-8 300 6 120 12 180 28 280 8 50-8 80 2 120-4v62H0z"/>
+                </svg>
+                <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+                    <path fill="#c46b45" d="M0 200V132c80 8 120-36 210-28 100 8 130-30 230-18 110 14 150 36 250 24 90-10 140 8 210-6 40-8 70 4 100 0v96H0z"/>
+                    <path fill="#a85236" d="M0 200V168c140-20 180-52 300-40 130 14 170-8 300 6 120 12 180 28 280 8 50-8 80 2 120-4v62H0z"/>
+                </svg>
+            </div>
+
+            <div class="ground" id="pebbles"></div>
+            <div class="track" id="track"></div>
+
+            <div class="shadow" id="shadow" aria-hidden="true"></div>
+
+            <div class="dinosaur" id="dinosaur">
+                <i class="speck s1" aria-hidden="true"></i>
+                <i class="speck s2" aria-hidden="true"></i>
+                <div class="dinosaur-body">
+                    <img class="dino-img" src="assets/img/dino.png" alt="">
+                </div>
+            </div>
+
+            <div class="obstacle" id="obstacle" data-kind="cactus">
+                <svg class="kind-cactus" viewBox="0 0 80 140" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+                    <path fill="#145e4c" d="M18 78V52a12 12 0 0 1 24 0v10H30v16H18z"/>
+                    <path fill="#1f7a62" d="M28 28h24a12 12 0 0 1 12 12v88H28V40a12 12 0 0 0-12-12z"/>
+                    <rect x="30" y="34" width="22" height="98" rx="11" fill="#1f8a70"/>
+                    <rect x="34" y="42" width="7" height="72" rx="3.5" fill="#8fe0c4" opacity=".45"/>
+                    <path fill="#187864" d="M52 86h14a10 10 0 0 0 10-10V60a10 10 0 0 0-20 0v26H52z"/>
+                    <g stroke="#e7fff4" stroke-width="1.5" stroke-linecap="round" opacity=".75">
+                        <path d="M36 52 30 47M36 68 29 66M48 58l6-5M48 78l7-2M40 96l-6 3"/>
+                    </g>
+                </svg>
+                <svg class="kind-tall" viewBox="0 0 70 170" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+                    <rect x="24" y="16" width="22" height="146" rx="11" fill="#146b58"/>
+                    <rect x="28" y="24" width="7" height="100" rx="3.5" fill="#8fe0c4" opacity=".4"/>
+                    <path fill="#0f5344" d="M24 70H12a10 10 0 0 1-10-10V46a10 10 0 0 1 20 0v24h2z"/>
+                    <path fill="#1c7d66" d="M46 96h12a11 11 0 0 0 11-11V68a11 11 0 0 0-22 0v28H46z"/>
+                    <g stroke="#e7fff4" stroke-width="1.5" stroke-linecap="round" opacity=".7">
+                        <path d="M30 40 24 35M30 62 23 60M44 50l6-5M44 110l7-2"/>
+                    </g>
+                </svg>
+                <svg class="kind-rock" viewBox="0 0 110 72" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+                    <path fill="#4e4658" d="M6 62 24 30 52 10l34 16 20 34-22 8H28z"/>
+                    <path fill="#7a7088" d="M24 30 52 10l14 16L40 42z"/>
+                    <path fill="#3a3444" d="M58 40l24-8 16 24-28 8z"/>
+                    <path stroke="#d9d0e4" stroke-width="2" stroke-linecap="round" opacity=".45" d="M34 36c8 4 14 4 22-2"/>
+                </svg>
+            </div>
+
+            <div class="grain" aria-hidden="true"></div>
+            <div class="pace" aria-hidden="true"><i id="paceBar"></i></div>
+
+            <div class="hud">
+                <div class="chip">
+                    <span>Score</span>
+                    <strong id="myPoint">0</strong>
+                </div>
+                <div class="chip chip-best">
+                    <span>Best</span>
+                    <strong id="bestPoint">0</strong>
+                </div>
+            </div>
+
+            <div class="overlay" id="startScreen">
+                <div class="card rise">
+                    <p class="kicker">Ready</p>
+                    <h2>Run the canyon</h2>
+                    <p>Jump the stone and the cactus. The pace only climbs.</p>
+                    <p class="record" id="recordLine" hidden>Best run <b id="recordValue">0</b></p>
+                    <button class="play" id="start" type="button">Start run</button>
+                    <p class="keys"><kbd>Space</kbd> <kbd>↑</kbd> click or tap</p>
+                </div>
+            </div>
+
+            <div class="overlay overlay-over" id="gameover" hidden>
+                <div class="card" id="overCard">
+                    <p class="kicker">Wrecked</p>
+                    <h2>Buried in dust</h2>
+                    <p class="badge" id="newBest" hidden>New best</p>
+                    <div class="end-stats">
+                        <div>
+                            <span>Score</span>
+                            <strong id="finalScore">0</strong>
+                        </div>
+                        <div>
+                            <span>Best</span>
+                            <strong id="finalBest">0</strong>
+                        </div>
+                    </div>
+                    <button class="play" id="again" type="button">Run again</button>
+                </div>
+            </div>
+        </section>
+
+        <p class="hint">Feet on the sand. Anything solid ends the run.</p>
+    </div>
 
     <script src="assets/script/script.js"></script>
 </body>
